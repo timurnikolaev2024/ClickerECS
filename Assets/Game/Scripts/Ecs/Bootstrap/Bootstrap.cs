@@ -17,6 +17,7 @@ namespace Game.Scripts.Ecs.Bootstrap
 
         public EcsWorld World => _world;
         public int BalanceEntity => _balanceEnt;
+        public GameCatalogSO Catalog => _catalog;
 
         private void Awake()
         {
@@ -47,7 +48,9 @@ namespace Game.Scripts.Ecs.Bootstrap
 
         private void OnDestroy()
         {
+#if UNITY_EDITOR
             SaveService.Save(_world, _catalog, _balanceEnt);
+#endif
             _systems?.Destroy();
             _world?.Destroy();
         }
