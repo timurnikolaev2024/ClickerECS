@@ -8,7 +8,7 @@ namespace Game.Scripts.UI
 {
     public class BalanceView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private Text _text;
         
         private EcsPool<Balance> _balancePool;
         private int _balanceEntity;
@@ -27,7 +27,7 @@ namespace Game.Scripts.UI
             if (float.IsNaN(_prevBalance) || Mathf.Abs(current - _prevBalance) > 0)
             {
                 _prevBalance = current;
-                _text.SetText("Баланс: {0}$", current);
+                _text.text = $"Баланс: {current}$";
             }
         }
     }
